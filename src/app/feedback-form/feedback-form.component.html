@@ -1,0 +1,21 @@
+<div class="col-md-9" [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+        <div class="row">
+          <div class="col-xs-9">
+            <div class="form-group netpromoter-form-group">
+
+              <input type="textarea" class="form-control" [(ngModel)]="this.feedback" id="feedback" name="feedback" required>
+              <button type="submit" class="center-block btn btn-default btn-sm" [disabled]="!feedbackForm.form.valid">Submit</button>
+          </div>
+      </div>
+
+  </div>
+</form>
+</div>
+<div class="col-md-9" [hidden]="!submitted">
+  <div class="row">
+      <div class="col-xs-9 data-point">
+      Thanks for your feedback!
+      </div>
+</div>
+</div>
