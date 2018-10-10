@@ -2,8 +2,8 @@
     <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
         <div class="row">
           <div class="col-xs-9">
+            <p>Please provide us feedback.</p>
             <div class="form-group netpromoter-form-group">
-
               <input type="textarea" class="form-control" [(ngModel)]="this.feedback" id="feedback" name="feedback" required>
               <button type="submit" class="center-block btn btn-default btn-sm" [disabled]="!feedbackForm.form.valid">Submit</button>
           </div>

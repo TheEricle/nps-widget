@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NetPromoter } from '../models/netpromoter';
 import { Subscription } from 'rxjs/Subscription';
 import { NetPromoterService } from '../netpromoter.service';
-import { NgForm } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'shared-netpromoter-form',
@@ -11,26 +11,22 @@ import { NgForm } from '@angular/forms';
 })
 export class NetPromoterFormComponent implements OnInit {
   sub: Subscription;
+  ctrl = new FormControl(null, Validators.required);
   feedback: string;
-  rating: number;
   submitted: boolean=false;
   disable: boolean=false;
-  netPromoter: NetPromoter = new NetPromoter(false,0,"");
+  netPromoter: NetPromoter = new NetPromoter(false,null,"");
 
   constructor(
     private netPromoterService: NetPromoterService
       ) { }
 
   ngOnInit() {
-      this.netPromoter = this.netPromoterService.getNetPromoter();
-      this.rating = this.netPromoter.rating;
+   //   this.netPromoter = this.netPromoterService.getNetPromoter();
+      this.ctrl.setValue(this.netPromoter.rating);
       this.feedback = this.netPromoter.feedback;
   }
 
-  onSubmit(form: NgForm) {
-      this.submitted=true;
-
-  }
 
 
 }

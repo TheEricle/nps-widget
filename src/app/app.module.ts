@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NetPromoterService } from './netpromoter.service';
 import { NetPromoterFormComponent } from './netpromoter-form/netpromoter-form.component';
@@ -17,7 +17,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [NetPromoterService],
   bootstrap: [AppComponent]

@@ -1,27 +1,19 @@
-<div class="col-md-9" [hidden]="submitted">
-  <form (ngSubmit)="onSubmit()" #netPromoterForm="ngForm">
+<div class="col-md-9" [hidden]="ctrl.valid">
     <div class="row">
       <div class="col-xs-9">
         <div class="form-group netpromoter-form-group">
-
-          <select class="form-control" [(ngModel)]="this.rating" id="rating" name="rating" required>
-            <option *ngFor="let star of [1,2,3,4,5,6,7,8,9,10]" [value]="star">{{star}}</option>
-        </select>
-        <shared-rating *ngFor="let star of [1,2,3,4,5,6,7,8,9,10]" [star]="star" [rating]="this.rating" ></shared-rating>
-        <button type="submit" class="center-block btn btn-default btn-sm" [disabled]="!netPromoterForm.form.valid">Submit</button>
+          <ngb-rating [formControl]="ctrl"></ngb-rating>
+        </div>
+      </div>
     </div>
 </div>
-
-</div>
-</form>
-</div>
-<div class="col-md-9" [hidden]="!submitted">
+<div class="col-md-9" [hidden]="ctrl.invalid">
   <div class="row">
-      <div class="col-xs-9 data-point" *ngIf="this.rating > 7">
-          Please take a minute to rate us on our marketplace page <a href="https://marketplace.athenahealth.com/product/clinical-assistant-by-grand-round-table">here</a>!
-      </div>
-      <div class="col-xs-9 data-point not-found" *ngIf="this.rating <= 7">
+    <div class="col-xs-9 data-point" *ngIf="ctrl.value > 7">
+      Please take a minute to rate us on our marketplace page <a href="https://marketplace.athenahealth.com/product/clinical-assistant-by-grand-round-table">here</a>!
+    </div>
+    <div class="col-xs-9 data-point not-found" *ngIf="ctrl.value <= 7">
       <shared-feedback-form [netpromoter]="netpromoter"></shared-feedback-form>
-   </div>
-</div>
+    </div>
+  </div>
 </div>
