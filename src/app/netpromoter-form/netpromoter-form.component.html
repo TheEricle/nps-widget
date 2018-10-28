@@ -1,19 +1,34 @@
-<div class="col-md-9" [hidden]="ctrl.valid">
-    <div class="row">
-      <div class="col-xs-9">
-        <div class="form-group netpromoter-form-group">
-          <ngb-rating [formControl]="ctrl"></ngb-rating>
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">How are we doing?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="col-md-9" [hidden]="ctrl.valid">
+      <div class="row">
+        <div class="col-xs-9">
+          <div class="form-group netpromoter-form-group">
+            <ngb-rating [formControl]="ctrl"></ngb-rating>
+          </div>
         </div>
       </div>
     </div>
-</div>
-<div class="col-md-9" [hidden]="ctrl.invalid">
-  <div class="row">
-    <div class="col-xs-9 data-point" *ngIf="ctrl.value > 7">
-      Please take a minute to rate us on our marketplace page <a href="https://marketplace.athenahealth.com/product/clinical-assistant-by-grand-round-table">here</a>!
+    <div class="col-md-9" [hidden]="ctrl.invalid">
+      <div class="row">
+        <div class="col-xs-9 data-point" *ngIf="ctrl.value > 7">
+          Please take a minute to rate us on our marketplace page <a href="https://marketplace.athenahealth.com/product/clinical-assistant-by-grand-round-table">here</a>!
+        </div>
+        <div class="col-xs-9 data-point not-found" *ngIf="ctrl.value <= 7">
+          <shared-feedback-form [netpromoter]="netpromoter"></shared-feedback-form>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-9 data-point not-found" *ngIf="ctrl.value <= 7">
-      <shared-feedback-form [netpromoter]="netpromoter"></shared-feedback-form>
+    <div class="col-md-9" [hidden]="!submitted">
+      <div class="row">
+        <div class="col-xs-9 data-point">
+          Thanks for your feedback!
+        </div>
+      </div>
     </div>
   </div>
-</div>

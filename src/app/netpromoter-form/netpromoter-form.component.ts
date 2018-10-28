@@ -3,6 +3,8 @@ import { NetPromoter } from '../models/netpromoter';
 import { Subscription } from 'rxjs/Subscription';
 import { NetPromoterService } from '../netpromoter.service';
 import { FormControl, Validators } from '@angular/forms';
+import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'shared-netpromoter-form',
@@ -18,13 +20,16 @@ export class NetPromoterFormComponent implements OnInit {
   netPromoter: NetPromoter = new NetPromoter(false,null,"");
 
   constructor(
-    private netPromoterService: NetPromoterService
-      ) { }
+    private netPromoterService: NetPromoterService,
+    public activeModal: NgbActiveModal
+    ) {
+
+  }
 
   ngOnInit() {
-   //   this.netPromoter = this.netPromoterService.getNetPromoter();
-      this.ctrl.setValue(this.netPromoter.rating);
-      this.feedback = this.netPromoter.feedback;
+    //   this.netPromoter = this.netPromoterService.getNetPromoter();
+    this.ctrl.setValue(this.netPromoter.rating);
+    this.feedback = this.netPromoter.feedback;
   }
 
 

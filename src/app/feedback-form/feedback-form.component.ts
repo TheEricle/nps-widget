@@ -15,15 +15,13 @@ export class FeedbackFormComponent implements OnInit {
     submitted: boolean=false;
     
 
-    constructor(
-        ) { }
+    constructor() { }
 
     ngOnInit() {
     }
 
     onSubmit(form: NgForm) {
         this.submitted=true;
-
     }
 
 }
