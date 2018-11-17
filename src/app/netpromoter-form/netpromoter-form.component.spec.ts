@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NetpromoterFormComponent } from './netpromoter-form.component';
+import { NetPromoterFormComponent } from './netpromoter-form.component';
 
 describe('NetpromoterFormComponent', () => {
-  let component: NetpromoterFormComponent;
-  let fixture: ComponentFixture<NetpromoterFormComponent>;
+  let component: NetPromoterFormComponent;
+  let fixture: ComponentFixture<NetPromoterFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NetpromoterFormComponent ]
+      declarations: [ NetPromoterFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NetpromoterFormComponent);
+    fixture = TestBed.createComponent(NetPromoterFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
