@@ -24,6 +24,7 @@ import { NetpromoterInitializationComponent } from './netpromoter-initialization
     ReactiveFormsModule
   ],
   providers: [NetPromoterService, NgbActiveModal, NgbModal],
-  bootstrap: [AppComponent, NetPromoterFormComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NetPromoterFormComponent]
 })
 export class AppModule { }

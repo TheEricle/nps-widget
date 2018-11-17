@@ -7,7 +7,6 @@ import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'shared-netpromoter-form',
   templateUrl: './netpromoter-form.component.html',
   styleUrls: ['./netpromoter-form.component.css']
 })
