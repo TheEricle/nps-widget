@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NetPromoter } from '../models/netpromoter';
 import { Subscription } from 'rxjs/Subscription';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
     templateUrl: './feedback-form.component.html',
     styleUrls: ['./feedback-form.component.css']
 })
-export class FeedbackFormComponent implements OnInit {
+export class FeedbackFormComponent implements OnInit, OnDestroy {
     @Input() netpromoter: NetPromoter;
     sub: Subscription;
     feedback: string="";
@@ -22,6 +22,9 @@ export class FeedbackFormComponent implements OnInit {
 
     onSubmit(form: NgForm) {
         this.submitted=true;
+    }
+
+    ngOnDestroy() {
     }
 
 }

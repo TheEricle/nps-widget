@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { NetpromoterService } from './netpromoter.service';
+import { NetPromoterService } from './netpromoter.service';
 
-describe('NetpromoterService', () => {
+describe('NetPromoterService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [NetpromoterService]
+      providers: [NetPromoterService]
     });
   });
 
-  it('should be created', inject([NetpromoterService], (service: NetpromoterService) => {
+  it('should be created', inject([NetPromoterService], (service: NetPromoterService) => {
     expect(service).toBeTruthy();
   }));
 });

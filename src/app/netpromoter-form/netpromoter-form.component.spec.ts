@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NetPromoterFormComponent } from './netpromoter-form.component';
 
-describe('NetpromoterFormComponent', () => {
+describe('NetPromoterFormComponent', () => {
   let component: NetPromoterFormComponent;
   let fixture: ComponentFixture<NetPromoterFormComponent>;
 
