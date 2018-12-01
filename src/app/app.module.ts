@@ -8,6 +8,7 @@ import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 import { RatingComponent } from './rating/rating.component';
 import { AppComponent } from './app.component';
 import { NetpromoterInitializationComponent } from './netpromoter-initialization/netpromoter-initialization.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,14 @@ import { NetpromoterInitializationComponent } from './netpromoter-initialization
     NetPromoterFormComponent,
     FeedbackFormComponent,
     RatingComponent,
-    NetpromoterInitializationComponent
+    NetpromoterInitializationComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [NetPromoterService, NgbActiveModal, NgbModal],
   bootstrap: [AppComponent],

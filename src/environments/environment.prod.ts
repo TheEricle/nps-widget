@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  netpromoterUrl: "assets/data/rating.json"
 };

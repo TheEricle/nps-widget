@@ -14,7 +14,7 @@ export class NetpromoterInitializationComponent implements OnInit {
         ) { 
         setTimeout(() => {
             this.modalService.open(NetPromoterFormComponent);
-        }, 30000);
+        }, 5000);
     }
 
     ngOnInit() {
