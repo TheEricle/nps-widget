@@ -26,6 +26,7 @@ export class NetPromoterFormComponent implements OnInit {
   ngOnInit() {
     this.sub = this.netPromoterService.run().subscribe(observer=>
       {
+      console.log(observer)
       this.netPromoter = observer;
       this.ctrl.setValue(this.netPromoter.rating);
       });
