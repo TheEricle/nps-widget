@@ -7,8 +7,11 @@ import { NetPromoterFormComponent } from './netpromoter-form/netpromoter-form.co
 import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 import { RatingComponent } from './rating/rating.component';
 import { AppComponent } from './app.component';
+import { InMemoryService } from './inmemory.service';
+import { environment } from '../environments/environment';
 import { NetpromoterInitializationComponent } from './netpromoter-initialization/netpromoter-initialization.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    environment.production ?
+    [] : HttpClientInMemoryWebApiModule.forRoot(InMemoryService)
   ],
   providers: [NetPromoterService, NgbActiveModal, NgbModal],
   bootstrap: [AppComponent],

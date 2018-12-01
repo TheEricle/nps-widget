@@ -40,9 +40,10 @@ export class NetPromoterService {
 }
 
 function mapNetpromoter(response: any): NetPromoter {
+      let id = response.body.id
       let disable = response.body.disable
       let rating = response.body.rating
       let feedback = response.body.feedback
-      let netpromoter = new NetPromoter(disable,rating, feedback);
+      let netpromoter = new NetPromoter(id, disable, rating, feedback);
     return netpromoter;
 }
