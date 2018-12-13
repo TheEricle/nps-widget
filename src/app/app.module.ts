@@ -11,6 +11,11 @@ import { environment } from '../environments/environment';
 import { NetpromoterInitializationComponent } from './netpromoter-initialization/netpromoter-initialization.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ErrorComponent } from './error/error.component';
+import { AppResolve } from './app.resolve';
+
+/* Routing Module */
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,17 +23,19 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     NetPromoterFormComponent,
     FeedbackFormComponent,
     NetpromoterInitializationComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    AppRoutingModule,
     HttpClientModule,
     environment.production ?
     [] : HttpClientInMemoryWebApiModule.forRoot(InMemoryService)
   ],
-  providers: [NetPromoterService, NgbActiveModal, NgbModal],
+  providers: [NetPromoterService, NgbActiveModal, NgbModal, AppResolve],
   bootstrap: [AppComponent],
   entryComponents: [NetPromoterFormComponent]
 })
