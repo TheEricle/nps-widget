@@ -11,13 +11,12 @@ import { Subscription } from 'rxjs/Subscription';
 export class FeedbackFormComponent implements OnInit, OnDestroy {
     @Input() netpromoter: NetPromoter;
     sub: Subscription;
-    feedback: string="";
     submitted: boolean=false;
     
-
     constructor() { }
 
     ngOnInit() {
+        console.log(this.netpromoter)
     }
 
     onSubmit(form: NgForm) {

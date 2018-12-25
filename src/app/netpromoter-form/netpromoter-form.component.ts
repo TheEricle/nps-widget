@@ -1,9 +1,10 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { NetPromoter } from '../models/netpromoter';
+import { NetPromoterService } from '../netpromoter.service'
 import { Subscription } from 'rxjs/Subscription';
-import { NetPromoterService } from '../netpromoter.service';
 import { FormControl, Validators } from '@angular/forms';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,26 +12,27 @@ import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./netpromoter-form.component.css']
 })
 export class NetPromoterFormComponent implements OnInit {
-  sub: Subscription;
+  @Input() netpromoter: NetPromoter;
   ctrl = new FormControl(null, Validators.required);
   submitted: boolean=false;
-  netPromoter: NetPromoter;
+  sub: Subscription;
 
   constructor(
-    private netPromoterService: NetPromoterService,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private netPromoterService: NetPromoterService
     ) {
 
   }
 
   ngOnInit() {
-    this.sub = this.netPromoterService.run().subscribe(observer=>
-      {
-      this.netPromoter = observer;
-      this.ctrl.setValue(this.netPromoter.rating);
-      });
-    
-  }
+    this.ctrl.setValue(this.netpromoter.rating);
+    this.sub = this.ctrl.valueChanges.subscribe(value=>{
+      console.log(value)
+      this.netPromoterService.updateNetPromoter(
+        new NetPromoter(this.netpromoter.id, this.netpromoter.disable,value, 
+          this.netpromoter.feedback));
+      })
+    }
 
   ngOnDestroy(){
     this.sub.unsubscribe();
