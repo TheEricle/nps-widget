@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NetPromoter } from './models/netpromoter';
-import { Observable, Subject, BehaviorSubject } from "rxjs/Rx";
+import { Observable } from "rxjs/Rx";
 import { environment } from '../environments/environment';
 import { HttpHeaders, HttpClient, HttpResponse, HttpParams } from '@angular/common/http';
 import { map, filter, catchError, tap, mergeMap } from 'rxjs/operators';
@@ -20,8 +20,8 @@ export class NetPromoterService {
 
   run(): Observable<NetPromoter> {
     let netPromoterObservable = this.httpClient.get(this.netpromoterUrl, {
-      observe: 'response'
-    });
+            observe: 'response'
+        });
     console.log("Running Service.")
     return netPromoterObservable.pipe(map(mapNetpromoter));
     }
@@ -31,26 +31,22 @@ export class NetPromoterService {
   }
   **/
 
-  updateNetPromoter(netpromoter: NetPromoter): Observable<NetPromoter>{
-    let params = new HttpParams();
-    params = params.set("id", netpromoter.id.toString());
-    params = params.set("rating", netpromoter.rating.toString());
-    params = params.set("feedback", netpromoter.feedback.toString());
-    params = params.set("disable", netpromoter.disable.toString());
-    let headers = new HttpHeaders();
-        headers = headers.append('Accept', 'application/json');
+  updateNetPromoter(netpromoter: NetPromoter){
+    let new_netpromoter = this.httpClient.put<NetPromoter>(this.netpromoterUrl, netpromoter, { observe: "response", 
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
+    return new_netpromoter.pipe(catchError(this.handleError));
+  }
 
-    let options = {
-            params: params,
-            headers: headers
-        }
-
-    let new_netpromoter = this.httpClient.post(this.netpromoterUrl, null, options)
-    return new_netpromoter.pipe(map(mapNetpromoter));
+  private handleError (error: any) {
+    // In a real world app, we might send the error to remote logging infrastructure
+    // and reformat for user consumption
+    console.error(error); // log to console instead
+    return Observable.throw(error);
   }
 }
 
-function mapNetpromoter(response: any): NetPromoter {
+function mapNetpromoter(response: HttpResponse<NetPromoter>): NetPromoter {
+    console.log(response);
       let id = response.body.id
       let disable = response.body.disable
       let rating = response.body.rating
